@@ -1,11 +1,11 @@
 ﻿namespace WestCoastEducation;
 
-public class TeacherManager
+public class TeacherManager : PersonManager<Teacher>
 {
-    private readonly List<Teacher> _teachers;
+    /* private readonly List<Teacher> _teachers; */
     public TeacherManager(CourseManager courseManager)
     {
-        _teachers = new()
+        _people.AddRange(new List<Teacher>
         {
             new Teacher("tch101", "Marcus", "Aurelius", "070 111 22 33", "marcus@westcoast.se", "19820412-1122", "Storgatan 5", "211 20", "Malmö")
             {
@@ -19,10 +19,19 @@ public class TeacherManager
                 ExpertiseAreas = new List<string> { "Chemistry", "Social Science", "Cooking" },
                 TeachingCourses = courseManager.GetCoursesByNumbers(103, 104, 105)
             }
-        };
+        });
     }
 
-    public Teacher? GetTeacherById(string teacherId)
+        public void RegisterCourseToTeacher(Course course, string teacherId)
+    {
+        var teacher = GetById(teacherId);
+        if (teacher != null && !teacher.TeachingCourses.Contains(course))
+        {
+            teacher.TeachingCourses.Add(course);
+        }
+    }
+
+    /* public Teacher? GetTeacherById(string teacherId)
     {
         return _teachers.FirstOrDefault(t => t.Id == teacherId);
     }
@@ -43,15 +52,5 @@ public class TeacherManager
     public void RemoveTeacher(Teacher teacher)
     {
         _teachers.Remove(teacher);
-    }
-
-    public void RegisterCourseToTeacher(Course course, string teacherId)
-    {
-        var teacher = GetTeacherById(teacherId);
-        if (teacher != null && !teacher.TeachingCourses.Contains(course))
-        {
-            teacher.TeachingCourses.Add(course);
-        }
-    }
-
+    } */
 }

@@ -1,11 +1,11 @@
 ﻿namespace WestCoastEducation;
 
-public class StudentManager
+public class StudentManager : PersonManager<Student>
 {
-    private readonly List<Student> _students;
+    /* private readonly List<Student> _students; */
     public StudentManager(CourseManager courseManager)
     {
-        _students = new()
+        _people.AddRange(new List<Student>
         {
             new("abc123", "Liam", "Diesel", "070 777 56 65", "student1@gmail.com", "20000118-3579", "Stora Nygatan 14B", "211 37", "Malmö")
             {
@@ -31,10 +31,19 @@ public class StudentManager
             {
             EnrolledCourses = courseManager.GetCoursesByNumbers(101, 105)
             }
-        };
+        });
     }
 
-    public Student? GetStudentById(string studentId)
+        public void RegisterCourseToStudent(Course course, string studentId)
+    {
+        var student = GetById(studentId);
+        if (student != null && !student.EnrolledCourses.Contains(course))
+        {
+            student.EnrolledCourses.Add(course);
+        }
+    }
+
+/*     public Student? GetStudentById(string studentId)
     {
         return _students.FirstOrDefault(s => s.Id == studentId);
     }
@@ -61,14 +70,5 @@ public class StudentManager
             return true;
         }
         return false;
-    }
-
-    public void RegisterCourseToStudent(Course course, string studentId)
-    {
-        var student = GetStudentById(studentId);
-        if (student != null && !student.EnrolledCourses.Contains(course))
-        {
-            student.EnrolledCourses.Add(course);
-        }
-    }
+    } */
 }
