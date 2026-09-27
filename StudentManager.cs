@@ -19,11 +19,32 @@ public class StudentManager
                         {
                 EnrolledCourses = courseManager.GetCoursesByNumbers(102, 104)
             },
-            new("tyu123", "Lena", "Bena", "070 777 67 25", "student4@gmail.com", "19900704-4237", "Bredgatan 3", "222 21", "Lund")              
+            new("tyu123", "Lena", "Bena", "070 777 67 25", "student4@gmail.com", "19900704-4237", "Bredgatan 3", "222 21", "Lund")
             {
                 EnrolledCourses = courseManager.GetCoursesByNumbers(103, 104, 105)
+            },
+            new("uio123", "Maja", "Gräddnos", "070 777 91 12", "student5@gmail.com", "19980315-1234", "Stortorget 1", "291 31", "Kristianstad")
+            {
+                EnrolledCourses = courseManager.GetCoursesByNumbers(101, 103, 105)
+            },
+            new("pas123", "Pelle", "Svanslös", "070 777 33 44", "student6@gmail.com", "19951130-8899", "Eriksgatan 45", "261 32", "Landskrona")
+            {
+            EnrolledCourses = courseManager.GetCoursesByNumbers(101, 105)
             }
         };
+    }
+
+    public Student? GetStudentById(string studentId)
+    {
+        return _students.FirstOrDefault(s => s.Id == studentId);
+    }
+
+    public void ListStudents()
+    {
+        foreach (var student in _students)
+        {
+            Console.WriteLine(student.GetInfo());
+        }
     }
 
     public void AddStudent(Student student)
@@ -33,26 +54,13 @@ public class StudentManager
 
     public bool RemoveStudent(string studentId)
     {
-        var student = _students.FirstOrDefault(s => s.StudentID == studentId);
+        var student = _students.FirstOrDefault(s => s.Id == studentId);
         if (student != null)
         {
             _students.Remove(student);
             return true;
         }
         return false;
-    }
-
-    public void ListStudents()
-    {
-        foreach (var student in _students)
-        {
-            Console.WriteLine($"[{student.StudentID}] {student.FirstName} {student.LastName} - {student.PhoneNumber} - {student.Email} - {student.SocialSecurityNumber} - {student.Address} - {student.ZipCode} {student.Locality} - Courses: {student.EnrolledCourses}");
-        }
-    }
-
-    public Student? GetStudentById(string studentId)
-    {
-        return _students.FirstOrDefault(s => s.StudentID == studentId);
     }
 
     public void RegisterCourseToStudent(Course course, string studentId)
