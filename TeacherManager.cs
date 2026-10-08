@@ -2,7 +2,6 @@
 
 public class TeacherManager : PersonManager<Teacher>
 {
-    /* private readonly List<Teacher> _teachers; */
     public TeacherManager(CourseManager courseManager)
     {
         _people.AddRange(new List<Teacher>
@@ -11,46 +10,29 @@ public class TeacherManager : PersonManager<Teacher>
             {
                 EmploymentDate = new DateTime(2020, 08, 15),
                 ExpertiseAreas = new List<string> { "History", "Math", "Programming" },
-                TeachingCourses = courseManager.GetCoursesByNumbers(101, 102)
             },
             new Teacher("tch102", "Anna", "Lindgren", "070 444 55 66", "anna@westcoast.se", "19880920-3344", "Hamngatan 12", "252 20", "Helsingborg")
             {
                 EmploymentDate = new DateTime(2023, 01, 10),
                 ExpertiseAreas = new List<string> { "Chemistry", "Social Science", "Cooking" },
-                TeachingCourses = courseManager.GetCoursesByNumbers(103, 104, 105)
             }
         });
+
+        foreach (var course in courseManager.GetCoursesByNumbers(101, 102))
+            RegisterCourseToTeacher(course, "tch101");
+
+        foreach (var course in courseManager.GetCoursesByNumbers(103, 104, 105))
+            RegisterCourseToTeacher(course, "tch102");
     }
 
-        public void RegisterCourseToTeacher(Course course, string teacherId)
+    public void RegisterCourseToTeacher(Course course, string teacherId)
     {
         var teacher = GetById(teacherId);
         if (teacher != null && !teacher.TeachingCourses.Contains(course))
         {
             teacher.TeachingCourses.Add(course);
+            course.DeployedTeachers.Add(teacher);
+
         }
     }
-
-    /* public Teacher? GetTeacherById(string teacherId)
-    {
-        return _teachers.FirstOrDefault(t => t.Id == teacherId);
-    }
-
-    public void ListTeacher()
-    {
-        foreach (var teacher in _teachers)
-        {
-            Console.WriteLine(teacher.GetInfo());
-        }
-    }
-
-    public void AddTeacher(Teacher teacher)
-    {
-        _teachers.Add(teacher);
-    }
-
-    public void RemoveTeacher(Teacher teacher)
-    {
-        _teachers.Remove(teacher);
-    } */
 }

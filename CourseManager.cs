@@ -4,12 +4,12 @@ public class CourseManager
 {
     private readonly List<Course> _courses = new()
     {
-    new(101, "Rise Of The Roman Empire", "History", 40),
-    new(102, "Algebra And Other Weird Numbers", "Math", 35),
-    new(103, "How To Build Bombs And Other Fun Toys", "Chemistry", 60),
-    new(104, "How To Best Serve Our AI Overlord", "Social Science", 45),
-    new(105, "Putting Ketchup On Everything And Tasting It", "Cooking", 50),
-    new(106, "Why George R.R Martin Still Hasn't Released Winds of Winter", "Literature", 20)
+    new(101, "Rise Of The Roman Empire", "History", 40, new DateOnly(2026, 5, 20), CourseType.InClass),
+    new(102, "Algebra And Other Weird Numbers", "Math", 35, new DateOnly(2026, 5, 20), CourseType.AtHome),
+    new(103, "How To Build Bombs And Other Fun Toys", "Chemistry", 60, new DateOnly(2026, 8, 10), CourseType.InClass),
+    new(104, "How To Best Serve Our AI Overlord", "Social Science", 45, new DateOnly(2026, 8, 10), CourseType.AtHome),
+    new(105, "Putting Ketchup On Everything And Tasting It", "Cooking", 50, new DateOnly(2026, 11, 2), CourseType.InClass),
+    new(106, "Why George R.R Martin Still Hasn't Released Winds of Winter", "Literature", 20, new DateOnly(2026, 11, 2), CourseType.AtHome)
 };
 
     public void AddCourse(Course course)
@@ -30,7 +30,7 @@ public class CourseManager
     {
         foreach (var course in _courses)
         {
-            Console.WriteLine($"[{course.CourseNumber}] {course.Title} - {course.Subject} - {course.LengthInWeeks} weeks - Enrolled students: {course.EnrolledStudents}");
+            Console.WriteLine(course.GetInfo());
         }
     }
 
@@ -50,7 +50,6 @@ public class CourseManager
 
     public List<Course> GetCoursesByNumbers(params int[] courseNumbers)
     {
-        // Hitta alla kurser vars CourseNumber finns i arrayen courseNumbers
         return _courses.Where(c => courseNumbers.Contains(c.CourseNumber)).ToList();
     }
 }

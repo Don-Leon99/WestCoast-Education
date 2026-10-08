@@ -8,11 +8,9 @@ public abstract class Person
     public string LastName { get; set; } = "";
     public string PhoneNumber { get; set; } = "";
     public string Email { get; set; } = "";
-    public string Address { get; set; } = "";
-    public string ZipCode { get; set; } = "";
-    public string Locality { get; set; } = "";
+    public Address Address { get; private set; }
 
-protected Person(
+    protected Person(
     string id,
     string firstName,
     string lastName,
@@ -22,7 +20,8 @@ protected Person(
     string address,
     string zip,
     string locality
-)
+
+    )
     {
         Id = id;
         FirstName = firstName;
@@ -30,12 +29,10 @@ protected Person(
         PhoneNumber = phone;
         Email = email;
         SocialSecurityNumber = ssn;
-        Address = address;
-        ZipCode = zip;
-        Locality = locality;
+        Address = new Address(address, zip, locality);
     }
     public virtual string GetInfo()
     {
-        return $"[{Id}] {FirstName} {LastName} - {PhoneNumber} - {Email} - {Address}, {ZipCode} {Locality}";
+        return $"[{Id}] {FirstName} {LastName} - {PhoneNumber} - {Email} - {Address}";
     }
 }
