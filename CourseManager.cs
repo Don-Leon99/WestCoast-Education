@@ -16,6 +16,7 @@ public class CourseManager
     {
         _courses.Add(course);
     }
+
     public bool RemoveCourse(int courseNumber)
     {
         var course = _courses.FirstOrDefault(c => c.CourseNumber == courseNumber);
@@ -26,6 +27,7 @@ public class CourseManager
         }
         return false;
     }
+
     public void ListCourses()
     {
         foreach (var course in _courses)
@@ -51,5 +53,25 @@ public class CourseManager
     public List<Course> GetCoursesByNumbers(params int[] courseNumbers)
     {
         return _courses.Where(c => courseNumbers.Contains(c.CourseNumber)).ToList();
+    }
+
+    public List<Course> GetAllCourses()
+    {
+        return _courses;
+    }
+
+    public void SaveCourseToJson()
+    {
+        Jsonify.SaveCourses(_courses);
+    }
+
+    public void LoadCoursesFromJson()
+    {
+        var loaded = Jsonify.LoadCourses();
+        if (loaded.Count > 0)
+        {
+            _courses.Clear();
+            _courses.AddRange(loaded);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace WestCoastEducation;
+﻿using System.Text.Json.Serialization;
+
+namespace WestCoastEducation;
 
 public class Course
 {
@@ -9,9 +11,12 @@ public class Course
     public DateOnly StartDate { get; set; }
     public DateOnly EndDate => StartDate.AddDays(LengthInWeeks * 7);
     public CourseType Presence { get; set; }
+    [JsonIgnore]
     public List<Student> EnrolledStudents { get; set; } = new();
+    [JsonIgnore]
     public List<Teacher> DeployedTeachers { get; set; } = new();
 
+    public Course(){}
     public Course(int id, string title, string subject, int length, DateOnly startDate, CourseType presence)
     {
         CourseNumber = id;
@@ -39,7 +44,7 @@ public class Course
             teacherText = teacherText.TrimEnd(',', ' ');
         }
         return $"[{CourseNumber}] {Title} ({Subject}) - {Presence} - " +
-       $"{LengthInWeeks} weeks, {StartDate} to {EndDate} - {GetStatus()} - " +
+       $"{LengthInWeeks} weeks, {StartDate:yyyy-MM-dd} to {EndDate:yyyy-MM-dd} - {GetStatus()} - " +
        $"Students: {EnrolledStudents.Count} - Teachers: {teacherText}";
     }
 
