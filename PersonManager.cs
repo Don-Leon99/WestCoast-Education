@@ -4,7 +4,7 @@ public abstract class PersonManager<T> where T : Person
 {
     protected readonly List<T> _people = new();
 
-    public T? GetById (string id)
+    public T? GetById(string id)
     {
         return _people.FirstOrDefault(p => p.Id == id);
     }
@@ -13,7 +13,7 @@ public abstract class PersonManager<T> where T : Person
     {
         foreach (var person in _people)
         {
-            Console.WriteLine(person.GetInfo());
+            Printer.Print(person);
         }
     }
 
@@ -35,5 +35,10 @@ public abstract class PersonManager<T> where T : Person
             Console.WriteLine("Couldn't find ID.");
         }
         return false;
+    }
+
+    public List<T> GetAll()
+    {
+        return _people;
     }
 }

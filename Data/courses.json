@@ -1,0 +1,116 @@
+[
+  {
+    "courseNumber": 101,
+    "title": "Rise Of The Roman Empire",
+    "subject": "History",
+    "lengthInWeeks": 40,
+    "startDate": "2026-05-20",
+    "endDate": "2027-02-24",
+    "presence": 0,
+    "studentIds": [
+      "abc123",
+      "uio123",
+      "pas123"
+    ],
+    "teacherIds": [
+      "tch101"
+    ]
+  },
+  {
+    "courseNumber": 102,
+    "title": "Algebra And Other Weird Numbers",
+    "subject": "Math",
+    "lengthInWeeks": 35,
+    "startDate": "2026-05-20",
+    "endDate": "2027-01-20",
+    "presence": 1,
+    "studentIds": [
+      "abc123",
+      "asd123",
+      "qwe123"
+    ],
+    "teacherIds": [
+      "tch101"
+    ]
+  },
+  {
+    "courseNumber": 103,
+    "title": "How To Build Bombs And Other Fun Toys",
+    "subject": "Chemistry",
+    "lengthInWeeks": 60,
+    "startDate": "2026-08-10",
+    "endDate": "2027-10-04",
+    "presence": 0,
+    "studentIds": [
+      "tyu123",
+      "uio123"
+    ],
+    "teacherIds": [
+      "tch102"
+    ]
+  },
+  {
+    "courseNumber": 104,
+    "title": "How To Best Serve Our AI Overlord",
+    "subject": "Social Science",
+    "lengthInWeeks": 45,
+    "startDate": "2026-08-10",
+    "endDate": "2027-06-21",
+    "presence": 1,
+    "studentIds": [
+      "qwe123",
+      "tyu123"
+    ],
+    "teacherIds": [
+      "tch102"
+    ]
+  },
+  {
+    "courseNumber": 105,
+    "title": "Putting Ketchup On Everything And Tasting It",
+    "subject": "Cooking",
+    "lengthInWeeks": 50,
+    "startDate": "2026-11-02",
+    "endDate": "2027-10-18",
+    "presence": 0,
+    "studentIds": [
+      "tyu123",
+      "uio123",
+      "pas123"
+    ],
+    "teacherIds": [
+      "tch102"
+    ]
+  },
+  {
+    "courseNumber": 106,
+    "title": "Why George R.R Martin Still Hasn't Released Winds of Winter",
+    "subject": "Literature",
+    "lengthInWeeks": 20,
+    "startDate": "2026-11-02",
+    "endDate": "2027-03-22",
+    "presence": 1,
+    "studentIds": [
+      "asd123",
+      "pas123"
+    ],
+    "teacherIds": [
+      "tch102"
+    ]
+  },
+  {
+    "courseNumber": 107,
+    "title": "test",
+    "subject": "testing",
+    "lengthInWeeks": 4,
+    "startDate": "2026-10-11",
+    "endDate": "2026-11-08",
+    "presence": 0,
+    "studentIds": [
+      "abc123"
+    ],
+    "teacherIds": [
+      "tch101"
+    ]
+  }
+]

@@ -32,7 +32,7 @@ public class CourseManager
     {
         foreach (var course in _courses)
         {
-            Console.WriteLine(course.GetInfo());
+            Printer.Print(course);
         }
     }
 
@@ -62,10 +62,15 @@ public class CourseManager
 
     public void SaveCourseToJson()
     {
+        foreach (var course in _courses)
+        {
+            course.StudentIds = course.EnrolledStudents.Select(s => s.Id).ToList();
+            course.TeacherIds = course.DeployedTeachers.Select(t => t.Id).ToList();
+        }
         Jsonify.SaveCourses(_courses);
     }
 
-    public void LoadCoursesFromJson()
+    public int LoadCoursesFromJson()
     {
         var loaded = Jsonify.LoadCourses();
         if (loaded.Count > 0)
@@ -73,5 +78,6 @@ public class CourseManager
             _courses.Clear();
             _courses.AddRange(loaded);
         }
+        return loaded.Count;
     }
 }

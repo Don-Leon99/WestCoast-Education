@@ -1,6 +1,6 @@
 namespace WestCoastEducation;
 
-public abstract class Person
+public abstract class Person : IPrintable
 {
     public string Id { get; private set; } = "";
     public string SocialSecurityNumber { get; private set; } = "";

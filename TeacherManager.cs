@@ -14,14 +14,14 @@ public class TeacherManager : PersonManager<Teacher>
             new Teacher("tch102", "Anna", "Lindgren", "070 444 55 66", "anna@westcoast.se", "19880920-3344", "Hamngatan 12", "252 20", "Helsingborg")
             {
                 EmploymentDate = new DateTime(2023, 01, 10),
-                ExpertiseAreas = new List<string> { "Chemistry", "Social Science", "Cooking" },
+                ExpertiseAreas = new List<string> { "Chemistry", "Social Science", "Cooking", "Literature" },
             }
         });
 
         foreach (var course in courseManager.GetCoursesByNumbers(101, 102))
             RegisterCourseToTeacher(course, "tch101");
 
-        foreach (var course in courseManager.GetCoursesByNumbers(103, 104, 105))
+        foreach (var course in courseManager.GetCoursesByNumbers(103, 104, 105, 106))
             RegisterCourseToTeacher(course, "tch102");
     }
 

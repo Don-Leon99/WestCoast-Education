@@ -16,11 +16,11 @@ public class StudentManager : PersonManager<Student>
         var enrollments = new Dictionary<string, int[]>
         {
             ["abc123"] = new[] { 101, 102 },
-            ["asd123"] = new[] { 102 },
+            ["asd123"] = new[] { 102, 106 },
             ["qwe123"] = new[] { 102, 104 },
             ["tyu123"] = new[] { 103, 104, 105 },
             ["uio123"] = new[] { 101, 103, 105 },
-            ["pas123"] = new[] { 101, 105 }
+            ["pas123"] = new[] { 101, 105, 106 }
         };
 
         foreach (var (studentId, courseNumbers) in enrollments)

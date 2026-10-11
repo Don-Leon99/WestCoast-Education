@@ -2,7 +2,7 @@
 
 namespace WestCoastEducation;
 
-public class Course
+public class Course : IPrintable
 {
     public int CourseNumber { get; set; }
     public string Title { get; set; } = "";
@@ -15,6 +15,8 @@ public class Course
     public List<Student> EnrolledStudents { get; set; } = new();
     [JsonIgnore]
     public List<Teacher> DeployedTeachers { get; set; } = new();
+    public List<string> StudentIds { get; set; } = new();
+    public List<string> TeacherIds { get; set; } = new();
 
     public Course(){}
     public Course(int id, string title, string subject, int length, DateOnly startDate, CourseType presence)
